@@ -1,17 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>My Todo App!</h1>
+    <ToDoItem @delete-to-do='deleteToDo' @add-todo='addTodo' v-bind:todo="todos"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import ToDoItem from '@/components/ToDoItem'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ToDoItem
+  },
+  methods:{
+    addTodo(todo){
+      this.todos.push(todo);
+    },
+    deleteToDo(id){
+      this.todos = this.todos.filter(i => i.id != id)
+    }
+  },
+  data(){
+    return{
+      todos: [
+        
+        ]
+    }
   }
 }
 </script>
@@ -25,4 +40,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
