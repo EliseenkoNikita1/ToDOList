@@ -10,7 +10,10 @@
 <script>
 
 	export default{
-		props: ['i', 'todo'], 
+		props: {
+		i:Object,
+		todo:Array
+	}, 
 	}
 
 

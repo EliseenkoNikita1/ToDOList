@@ -1,8 +1,7 @@
 <template>
 	<div>
-		<form @submit.prevent='onSubmit'>
-		<input class='input' type="text" placeholder="New todo" v-model='text'>
-		</form>
+		<input @change='onChange' class='input' type="text" placeholder="New todo" v-model='text'>
+		
 		<ul>
 			<list
 			v-for="i in todo"
@@ -20,7 +19,9 @@
 import list from '@/components/list'
 	
 	export default{
-		props:['todo'],
+		props:{
+			todo: Array,
+		},
 		components: {
 			list,
 		},
@@ -32,7 +33,7 @@ import list from '@/components/list'
 		},
 	
 		methods: {
-			onSubmit(){
+			onChange(){
 				if (this.text.trim()){
 					let newTodo = {
 						id: this.id++,
