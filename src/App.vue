@@ -5,8 +5,8 @@
   </div>
 </template>
 
-<script>
-
+<script >
+const _ = require('lodash');
 import ToDoItem from '@/components/ToDoItem'
 export default {
   name: 'App',
@@ -17,8 +17,11 @@ export default {
     addTodo(todo){
       this.todos.push(todo);
     },
-    deleteToDo(id){
-      this.todos = this.todos.filter(i => i.id != id)
+    deleteToDo(iD){
+      let index = _.findIndex(this.todos, function(o){ return o.id == iD})
+      this.todos.splice(index, 1)
+
+      // this.todos = this.todos.filter(i => i.id != id)
     }
   },
   data(){
